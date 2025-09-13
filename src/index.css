@@ -18,28 +18,28 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 27%;
 
-    /* Primary: Calming Teal */
-    --primary: 180 77% 48%;
+    /* Primary: Bright Teal */
+    --primary: 180 85% 58%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 180 65% 65%;
+    --primary-glow: 180 75% 75%;
 
-    /* Secondary: Soft Sage */
-    --secondary: 140 23% 89%;
-    --secondary-foreground: 140 85% 25%;
+    /* Secondary: Bright Sage */
+    --secondary: 140 35% 92%;
+    --secondary-foreground: 140 90% 20%;
 
-    /* Muted: Gentle Gray */
-    --muted: 210 16% 93%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted: Bright Gray */
+    --muted: 210 25% 95%;
+    --muted-foreground: 215 20% 40%;
 
-    /* Accent: Warm Wellness */
-    --accent: 35 100% 82%;
-    --accent-foreground: 25 95% 25%;
+    /* Accent: Vibrant Wellness */
+    --accent: 35 100% 88%;
+    --accent-foreground: 25 95% 20%;
 
-    /* Wellness States */
-    --wellness-calm: 200 100% 85%;
-    --wellness-growth: 140 60% 70%;
-    --wellness-energy: 45 100% 75%;
-    --wellness-focus: 260 60% 80%;
+    /* Wellness States - Brighter */
+    --wellness-calm: 200 100% 88%;
+    --wellness-growth: 140 70% 75%;
+    --wellness-energy: 45 100% 80%;
+    --wellness-focus: 260 70% 85%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;

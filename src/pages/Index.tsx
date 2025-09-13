@@ -37,17 +37,31 @@ const Index = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-wellness-calm/20">
-      {/* Header Section */}
-      <header className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="Wellness landscape" 
-            className="w-full h-full object-cover opacity-30"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80" />
-        </div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Beautiful Animated Background */}
+      <div className="fixed inset-0 bg-mesh"></div>
+      <div className="fixed inset-0 bg-aurora"></div>
+      <div className="fixed inset-0 bg-pattern-dots opacity-30"></div>
+      
+      {/* Floating Elements */}
+      <div className="fixed top-20 left-10 w-32 h-32 rounded-full bg-wellness-calm/20 blur-xl floating"></div>
+      <div className="fixed top-40 right-20 w-24 h-24 rounded-full bg-wellness-energy/20 blur-xl floating-delayed"></div>
+      <div className="fixed bottom-32 left-1/4 w-40 h-40 rounded-full bg-wellness-focus/15 blur-2xl floating"></div>
+      <div className="fixed bottom-20 right-1/3 w-28 h-28 rounded-full bg-wellness-growth/25 blur-xl floating-delayed"></div>
+      
+      {/* Content Overlay */}
+      <div className="relative z-10 bg-gradient-to-br from-background/95 via-background/90 to-background/95">
+        {/* Header Section */}
+        <header className="relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src={heroImage} 
+              alt="Wellness landscape" 
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background/90" />
+            <div className="absolute inset-0 bg-pattern-grid opacity-20" />
+          </div>
         
         <div className="relative container mx-auto px-4 pt-16 pb-24">
           <div className="text-center max-w-4xl mx-auto">
@@ -82,59 +96,60 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </header>
+        </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column */}
-          <div className="space-y-8">
-            {/* Daily Check-in */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-6 text-center lg:text-left">
-                {todayEntry ? 'Today\'s Update' : 'Daily Check-in'}
-              </h2>
-              {!todayEntry ? (
-                <MoodCheckIn onSubmit={handleMoodSubmit} />
-              ) : (
-                <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg p-6 text-center max-w-md mx-auto">
-                  <div className="text-4xl mb-2">✅</div>
-                  <h3 className="font-medium text-lg mb-2">Check-in Complete!</h3>
-                  <p className="text-muted-foreground mb-4">
-                    You recorded feeling <span className="font-medium text-primary">{todayEntry.label}</span> today.
-                  </p>
-                  <Button 
-                    variant="outline"
-                    onClick={() => setMoodEntries(prev => prev.filter(entry => entry.date !== todayEntry.date))}
-                    className="text-sm"
-                  >
-                    Update Entry
-                  </Button>
-                </div>
-              )}
-            </section>
+        {/* Main Content */}
+        <main className="container mx-auto px-4 pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Column */}
+            <div className="space-y-8">
+              {/* Daily Check-in */}
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-center lg:text-left">
+                  {todayEntry ? 'Today\'s Update' : 'Daily Check-in'}
+                </h2>
+                {!todayEntry ? (
+                  <MoodCheckIn onSubmit={handleMoodSubmit} />
+                ) : (
+                  <div className="bg-card/60 backdrop-blur-md border border-border/30 rounded-lg p-6 text-center max-w-md mx-auto shadow-lg">
+                    <div className="text-4xl mb-2">✅</div>
+                    <h3 className="font-medium text-lg mb-2">Check-in Complete!</h3>
+                    <p className="text-muted-foreground mb-4">
+                      You recorded feeling <span className="font-medium text-primary">{todayEntry.label}</span> today.
+                    </p>
+                    <Button 
+                      variant="outline"
+                      onClick={() => setMoodEntries(prev => prev.filter(entry => entry.date !== todayEntry.date))}
+                      className="text-sm"
+                    >
+                      Update Entry
+                    </Button>
+                  </div>
+                )}
+              </section>
 
-            {/* Wellness Recommendations */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-6 text-center lg:text-left">
-                Wellness Activities
-              </h2>
-              <WellnessRecommendations />
-            </section>
+              {/* Wellness Recommendations */}
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-center lg:text-left">
+                  Wellness Activities
+                </h2>
+                <WellnessRecommendations />
+              </section>
+            </div>
+
+            {/* Right Column */}
+            <div className="space-y-8">
+              {/* Mood Trends */}
+              <section>
+                <h2 className="text-2xl font-semibold mb-6 text-center lg:text-left">
+                  Your Progress
+                </h2>
+                <MoodTrends moodData={moodEntries} />
+              </section>
+            </div>
           </div>
-
-          {/* Right Column */}
-          <div className="space-y-8">
-            {/* Mood Trends */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-6 text-center lg:text-left">
-                Your Progress
-              </h2>
-              <MoodTrends moodData={moodEntries} />
-            </section>
-          </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 };
